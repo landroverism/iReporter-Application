@@ -107,7 +107,7 @@ export function SmartAssistant({ onSuggestion }: SmartAssistantProps) {
   return (
     <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-lg p-4 sm:p-6 border border-purple-200">
       <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-4">
-        <div className="text-2xl">🤖</div>
+        <i className="fa-solid fa-robot text-2xl text-purple-600"></i>
         <h3 className="text-lg font-semibold text-gray-800">Smart Assistant</h3>
         <div className="text-xs sm:text-sm text-purple-600 bg-purple-100 px-2 py-1 rounded-full">
           AI-Powered
@@ -156,7 +156,11 @@ export function SmartAssistant({ onSuggestion }: SmartAssistantProps) {
             title="Voice input"
             aria-label="Voice input"
           >
-            {isListening ? '🔴' : '🎤'}
+            {isListening ? (
+              <i className="fa-solid fa-circle-stop text-red-600"></i>
+            ) : (
+              <i className="fa-solid fa-microphone"></i>
+            )}
           </button>
         </div>
 
@@ -173,7 +177,7 @@ export function SmartAssistant({ onSuggestion }: SmartAssistantProps) {
               </>
             ) : (
               <>
-                <span>🔍</span>
+                <i className="fa-solid fa-list-check"></i>
                 <span>Auto-Categorize</span>
               </>
             )}
@@ -184,7 +188,7 @@ export function SmartAssistant({ onSuggestion }: SmartAssistantProps) {
             disabled={!userInput.trim()}
             className="w-full sm:w-auto bg-blue-600 text-white py-2 px-4 rounded-lg font-medium hover:bg-blue-700 transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
           >
-            <span>💬</span>
+            <i className="fa-solid fa-comments"></i>
             <span>Chat</span>
           </button>
         </div>
@@ -192,7 +196,10 @@ export function SmartAssistant({ onSuggestion }: SmartAssistantProps) {
 
       {/* Quick Tips */}
       <div className="mt-4 p-3 bg-white rounded-lg border border-gray-200">
-        <h4 className="text-sm font-medium text-gray-800 mb-2">💡 Quick Tips:</h4>
+        <h4 className="text-sm font-medium text-gray-800 mb-2 flex items-center gap-2">
+          <i className="fa-solid fa-lightbulb text-amber-500"></i>
+          Quick Tips:
+        </h4>
         <ul className="text-xs text-gray-600 space-y-1">
           <li>• Be specific about what happened, when, and where</li>
           <li>• Mention any officials or departments involved</li>

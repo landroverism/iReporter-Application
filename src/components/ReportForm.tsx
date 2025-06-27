@@ -344,7 +344,7 @@ export function ReportForm() {
                   disabled={isGettingLocation}
                   className="bg-gradient-to-r from-teal-600 to-teal-700 text-white px-4 py-2.5 rounded-xl hover:from-teal-700 hover:to-teal-800 transition-all duration-200 disabled:opacity-50 flex items-center justify-center space-x-2 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 w-full sm:w-auto"
                 >
-                  <span>📍</span>
+                  <i className="fa-solid fa-location-dot text-white"></i>
                   <span className="font-medium">{isGettingLocation ? 'Getting Location...' : 'Use Current Location'}</span>
                 </button>
               </div>
@@ -352,7 +352,7 @@ export function ReportForm() {
               {location ? (
                 <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-xl p-4">
                   <div className="flex items-center space-x-2">
-                    <span className="text-green-600">✅</span>
+                    <i className="fa-solid fa-circle-check text-green-600 text-lg"></i>
                     <span className="text-sm font-medium text-green-800">Location captured:</span>
                   </div>
                   <div className="text-sm text-green-700 mt-1 break-words">{location.address}</div>

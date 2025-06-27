@@ -116,23 +116,23 @@ export function Footer({ onNavigate }: FooterProps) {
             <h4 className="text-lg font-semibold mb-4 text-teal-400">Get in Touch</h4>
             <div className="space-y-3 text-sm">
               <div className="flex items-center space-x-2">
-                <span className="text-teal-400">📧</span>
+                <i className="fa-solid fa-envelope text-teal-400"></i>
                 <a href="mailto:hamsimotwo@gmail.com" className="text-gray-300 hover:text-white transition-colors">
                   hamsimotwo@gmail.com
                 </a>
               </div>
               <div className="flex items-center space-x-2">
-                <span className="text-teal-400">📱</span>
+                <i className="fa-solid fa-mobile-screen text-teal-400"></i>
                 <a href="https://wa.me/254713593401" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
                   +254 713 593 401
                 </a>
               </div>
               <div className="flex items-center space-x-2">
-                <span className="text-teal-400">📍</span>
+                <i className="fa-solid fa-location-dot text-teal-400"></i>
                 <span className="text-gray-300">Syokimau, Nairobi</span>
               </div>
               <div className="flex items-center space-x-2">
-                <span className="text-teal-400">🕒</span>
+                <i className="fa-solid fa-clock text-teal-400"></i>
                 <span className="text-gray-300">24/7 Support Available</span>
               </div>
             </div>
