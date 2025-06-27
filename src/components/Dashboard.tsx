@@ -25,12 +25,12 @@ export function Dashboard() {
   const isAdmin = userProfile.profile?.isAdmin;
 
   const tabs = [
-    { id: 'overview', label: 'Overview', icon: '🏠' },
-    { id: 'create', label: 'Create Report', icon: '➕' },
-    { id: 'reports', label: 'My Reports', icon: '📋' },
-    ...(isAdmin ? [{ id: 'admin', label: 'Admin Panel', icon: '⚙️' }] : []),
-    { id: 'notifications', label: `Notifications${unreadCount ? ` (${unreadCount})` : ''}`, icon: '🔔' },
-    { id: 'profile', label: 'Profile', icon: '👤' },
+    { id: 'overview', label: 'Overview', icon: <i className="fa-solid fa-house"></i> },
+    { id: 'create', label: 'Create Report', icon: <i className="fa-solid fa-plus"></i> },
+    { id: 'reports', label: 'My Reports', icon: <i className="fa-solid fa-clipboard-list"></i> },
+    ...(isAdmin ? [{ id: 'admin', label: 'Admin Panel', icon: <i className="fa-solid fa-gear"></i> }] : []),
+    { id: 'notifications', label: `Notifications${unreadCount ? ` (${unreadCount})` : ''}`, icon: <i className="fa-solid fa-bell"></i> },
+    { id: 'profile', label: 'Profile', icon: <i className="fa-solid fa-user"></i> },
   ];
 
   return (
@@ -44,24 +44,66 @@ export function Dashboard() {
         </p>
       </div>
 
-      {/* Navigation Tabs */}
-      <div className="border-b border-gray-200 mb-6">
-        <nav className="-mb-px flex space-x-8 overflow-x-auto">
+      {/* Navigation Tabs - Desktop */}
+      <div className="border-b border-gray-200 mb-6 hidden sm:block">
+        <nav className="-mb-px flex justify-between max-w-4xl">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id as TabType)}
-              className={`py-2 px-1 border-b-2 font-medium text-sm whitespace-nowrap ${
+              className={`py-3 px-4 border-b-2 font-medium text-sm whitespace-nowrap flex items-center transition-all duration-200 ${
                 activeTab === tab.id
-                  ? 'border-teal-500 text-teal-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  ? 'border-teal-500 text-teal-600 bg-teal-50'
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 hover:bg-gray-50'
               }`}
             >
-              <span className="mr-2">{tab.icon}</span>
-              {tab.label}
+              <span className="mr-2 text-lg">{tab.icon}</span>
+              <span>{tab.label}</span>
             </button>
           ))}
         </nav>
+      </div>
+
+      {/* Navigation Tabs - Mobile */}
+      <div className="sm:hidden mb-6">
+        <div className="flex items-center justify-between mb-2">
+          <h2 className="text-lg font-medium text-gray-700">{tabs.find(tab => tab.id === activeTab)?.label}</h2>
+          <div className="relative">
+            <select
+              value={activeTab}
+              onChange={(e) => setActiveTab(e.target.value as TabType)}
+              className="block appearance-none bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded-lg leading-tight focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+            >
+              {tabs.map((tab) => (
+                <option key={tab.id} value={tab.id}>
+                  {tab.label}
+                </option>
+              ))}
+            </select>
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+              <i className="fa-solid fa-chevron-down"></i>
+            </div>
+          </div>
+        </div>
+        
+        <div className="grid grid-cols-5 gap-1 bg-gray-100 p-1 rounded-xl">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id as TabType)}
+              className={`p-2 rounded-lg flex flex-col items-center justify-center ${
+                activeTab === tab.id
+                  ? 'bg-white text-teal-600 shadow-sm'
+                  : 'text-gray-500 hover:bg-gray-200'
+              }`}
+            >
+              <span className="text-lg mb-1">{tab.icon}</span>
+              <span className="text-xs truncate w-full text-center">
+                {tab.id === 'notifications' ? 'Notif' + (unreadCount ? ` (${unreadCount})` : '') : tab.label.split(' ')[0]}
+              </span>
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Tab Content */}
