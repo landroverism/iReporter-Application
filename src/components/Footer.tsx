@@ -183,19 +183,9 @@ export function Footer({ onNavigate }: FooterProps) {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-gray-700">
-        <div className="max-w-6xl mx-auto px-4 py-4">
-          <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-            <div className="mb-2 md:mb-0">
-              © {currentYear} iReporter. All rights reserved. Fighting corruption, one report at a time.
-            </div>
-            <div className="flex space-x-6">
-              <button className="hover:text-white transition-colors">Privacy</button>
-              <button className="hover:text-white transition-colors">Terms</button>
-              <button className="hover:text-white transition-colors">Cookies</button>
-            </div>
-          </div>
-        </div>
+      <div className="border-t border-gray-700 mt-12 pt-6 pb-4 text-center text-gray-400 text-xs">
+        &copy; {new Date().getFullYear()} iReporter. All rights reserved.
+        <div className="mt-2">Developed by Ham Kemboi</div>
       </div>
     </footer>
   );

@@ -1,12 +1,20 @@
 "use client";
 import { useAuthActions } from "@convex-dev/auth/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "sonner";
 
 export function SignInForm() {
   const { signIn } = useAuthActions();
   const [flow, setFlow] = useState<"signIn" | "signUp">("signIn");
   const [submitting, setSubmitting] = useState(false);
+  const [authSuccess, setAuthSuccess] = useState(false);
+  
+  // Scroll to top when authentication is successful
+  useEffect(() => {
+    if (authSuccess) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [authSuccess]);
 
   return (
     <div className="w-full">
@@ -17,19 +25,24 @@ export function SignInForm() {
           setSubmitting(true);
           const formData = new FormData(e.target as HTMLFormElement);
           formData.set("flow", flow);
-          void signIn("password", formData).catch((error) => {
-            let toastTitle = "";
-            if (error.message.includes("Invalid password")) {
-              toastTitle = "Invalid password. Please try again.";
-            } else {
-              toastTitle =
-                flow === "signIn"
-                  ? "Could not sign in, did you mean to sign up?"
-                  : "Could not sign up, did you mean to sign in?";
-            }
-            toast.error(toastTitle);
-            setSubmitting(false);
-          });
+          void signIn("password", formData)
+            .then(() => {
+              setAuthSuccess(true);
+              toast.success(flow === "signIn" ? "Signed in successfully!" : "Account created successfully!");
+            })
+            .catch((error) => {
+              let toastTitle = "";
+              if (error.message.includes("Invalid password")) {
+                toastTitle = "Invalid password. Please try again.";
+              } else {
+                toastTitle =
+                  flow === "signIn"
+                    ? "Could not sign in, did you mean to sign up?"
+                    : "Could not sign up, did you mean to sign in?";
+              }
+              toast.error(toastTitle);
+              setSubmitting(false);
+            });
         }}
       >
         <input
@@ -69,7 +82,16 @@ export function SignInForm() {
         <span className="mx-4 text-secondary">or</span>
         <hr className="my-4 grow border-gray-200" />
       </div>
-      <button className="auth-button" onClick={() => void signIn("anonymous")}>
+      <button 
+        className="auth-button" 
+        onClick={() => {
+          void signIn("anonymous")
+            .then(() => {
+              setAuthSuccess(true);
+              toast.success("Signed in anonymously!");
+            });
+        }}
+      >
         Sign in anonymously
       </button>
     </div>

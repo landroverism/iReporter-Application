@@ -360,7 +360,7 @@ export function ReportForm() {
               ) : (
                 <input
                   type="text"
-                  placeholder="Enter the location manually (e.g., 123 Main St, City, State)"
+                  placeholder="Enter the location manually (e.g., Syokimau, Nairobi)"
                   className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-200"
                   onChange={(e) => {
                     if (e.target.value) {
