@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAction } from 'convex/react';
 import { api } from '../../convex/_generated/api';
 import { toast } from 'sonner';
@@ -105,11 +105,11 @@ export function SmartAssistant({ onSuggestion }: SmartAssistantProps) {
   };
 
   return (
-    <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-lg p-6 border border-purple-200">
-      <div className="flex items-center space-x-3 mb-4">
+    <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-lg p-4 sm:p-6 border border-purple-200">
+      <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-4">
         <div className="text-2xl">🤖</div>
         <h3 className="text-lg font-semibold text-gray-800">Smart Assistant</h3>
-        <div className="text-sm text-purple-600 bg-purple-100 px-2 py-1 rounded-full">
+        <div className="text-xs sm:text-sm text-purple-600 bg-purple-100 px-2 py-1 rounded-full">
           AI-Powered
         </div>
       </div>
@@ -120,7 +120,7 @@ export function SmartAssistant({ onSuggestion }: SmartAssistantProps) {
 
       {/* Chat History */}
       {chatHistory.length > 0 && (
-        <div className="bg-white rounded-lg p-4 mb-4 max-h-40 overflow-y-auto">
+        <div className="bg-white rounded-lg p-3 sm:p-4 mb-4 max-h-40 overflow-y-auto">
           {chatHistory.map((message, index) => (
             <div key={index} className={`mb-2 ${message.role === 'user' ? 'text-right' : 'text-left'}`}>
               <div className={`inline-block p-2 rounded-lg text-sm ${
@@ -137,33 +137,34 @@ export function SmartAssistant({ onSuggestion }: SmartAssistantProps) {
 
       {/* Input Area */}
       <div className="space-y-3">
-        <div className="flex space-x-2">
+        <div className="flex flex-col sm:flex-row gap-2">
           <textarea
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
-            placeholder="Describe your issue in detail... (e.g., 'A government official asked for money to process my permit')"
-            className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
+            placeholder="Describe your issue (e.g., bribe requested by gov't official to process permit)"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
             rows={3}
           />
           <button
             onClick={startVoiceInput}
             disabled={isListening}
-            className={`px-3 py-2 rounded-lg transition-colors ${
+            className={`sm:self-start px-3 py-2 rounded-lg transition-colors ${
               isListening 
                 ? 'bg-red-100 text-red-600' 
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
             }`}
             title="Voice input"
+            aria-label="Voice input"
           >
             {isListening ? '🔴' : '🎤'}
           </button>
         </div>
 
-        <div className="flex space-x-3">
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
           <button
             onClick={handleAnalyze}
             disabled={isAnalyzing || !userInput.trim()}
-            className="flex-1 bg-purple-600 text-white py-2 px-4 rounded-lg font-medium hover:bg-purple-700 transition-colors disabled:opacity-50 flex items-center justify-center space-x-2"
+            className="w-full bg-purple-600 text-white py-2 px-3 sm:px-4 rounded-lg font-medium hover:bg-purple-700 transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
           >
             {isAnalyzing ? (
               <>
@@ -181,7 +182,7 @@ export function SmartAssistant({ onSuggestion }: SmartAssistantProps) {
           <button
             onClick={handleChat}
             disabled={!userInput.trim()}
-            className="bg-blue-600 text-white py-2 px-4 rounded-lg font-medium hover:bg-blue-700 transition-colors disabled:opacity-50 flex items-center space-x-2"
+            className="w-full sm:w-auto bg-blue-600 text-white py-2 px-4 rounded-lg font-medium hover:bg-blue-700 transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
           >
             <span>💬</span>
             <span>Chat</span>

@@ -129,7 +129,7 @@ export function Footer({ onNavigate }: FooterProps) {
               </div>
               <div className="flex items-center space-x-2">
                 <span className="text-teal-400">📍</span>
-                <span className="text-gray-300">123 Democracy St, Capital City</span>
+                <span className="text-gray-300">Syokimau, Nairobi</span>
               </div>
               <div className="flex items-center space-x-2">
                 <span className="text-teal-400">🕒</span>
