@@ -1,28 +1,124 @@
-# Ireporter Application with Convex Backend
-  
-This is a project built with [Chef](https://chef.convex.dev) using [Convex](https://convex.dev) as its backend.
-  
-This project is connected to the Convex deployment named [`resolute-ox-542`](https://dashboard.convex.dev/d/resolute-ox-542).
-  
-## Project structure
-  
-The frontend code is in the `app` directory and is built with [Vite](https://vitejs.dev/).
-  
-The backend code is in the `convex` directory.
-  
-`npm run dev` will start the frontend and backend servers.
+# iReporter: Empowering Citizens Against Corruption
 
-## App authentication
+![iReporter Logo](public/logo.png)
 
-Chef apps use [Convex Auth](https://auth.convex.dev/) with Anonymous auth for easy sign in. You may wish to change this before deploying your app.
+## Developed by Ham Kemboi
 
-## Developing and deploying your app
+## 🌟 Overview
 
-Check out the [Convex docs](https://docs.convex.dev/) for more information on how to develop with Convex.
-* If you're new to Convex, the [Overview](https://docs.convex.dev/understanding/) is a good place to start
-* Check out the [Hosting and Deployment](https://docs.convex.dev/production/) docs for how to deploy your app
-* Read the [Best Practices](https://docs.convex.dev/understanding/best-practices/) guide for tips on how to improve you app further
+iReporter is a powerful web platform that empowers citizens to report corruption, request government intervention, and highlight issues requiring attention. Built with modern web technologies and enhanced with AI capabilities, this application serves as a digital bridge between citizens and authorities.
 
-## HTTP API
+### Live Demo
+[iReporter Live Application](https://ireporter-new.netlify.app/)
 
-User-defined http routes are defined in the `convex/router.ts` file. We split these routes into a separate file from `convex/http.ts` to allow us to prevent the LLM from modifying the authentication routes.
+## ✨ Key Features
+
+- **AI-Powered Smart Assistant**: Leveraging OpenAI's GPT-4.1-nano model to help users articulate their reports, categorize issues automatically, and provide guidance throughout the reporting process
+- **Geolocation Integration**: Precise location capturing for accurate reporting of incidents
+- **Real-time Status Tracking**: Users can monitor the progress of their reports from submission to resolution
+- **Responsive Design**: Seamlessly adapts to any device with an intuitive interface optimized for both desktop and mobile experiences
+- **Administrative Dashboard**: Comprehensive tools for officials to manage, prioritize, and respond to citizen reports
+
+## 🛠️ Technology Stack
+
+- **Frontend**: React 19 with TypeScript, styled with Tailwind CSS for a modern, responsive UI
+- **Backend**: Convex for real-time database and serverless functions
+- **Authentication**: Secure multi-provider authentication system
+- **AI Integration**: OpenAI GPT-4.1-nano for report analysis and categorization
+- **Notifications**: Real-time alert system for status updates
+- **Visualization**: Interactive maps and data visualization components
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v18 or higher)
+- npm or yarn
+- Convex account for backend services
+- OpenAI API key for AI features
+
+### Installation
+
+1. Clone the repository
+   ```bash
+   git clone https://github.com/yourusername/iReporter-Application.git
+   cd iReporter-Application
+   ```
+
+2. Install dependencies
+   ```bash
+   npm install
+   ```
+
+3. Create a `.env` file in the root directory with the following variables:
+   ```
+   CONVEX_DEPLOYMENT=your_convex_deployment_id
+   CONVEX_OPENAI_API_KEY=your_openai_api_key
+   ```
+
+4. Start the development server
+   ```bash
+   npm run dev
+   ```
+
+5. Open your browser and navigate to `http://localhost:5173`
+
+## 📱 Mobile Responsiveness
+
+The application is fully responsive and optimized for mobile devices with:
+- Adaptive navigation system that transforms based on screen size
+- Touch-friendly interface elements
+- Optimized form layouts for smaller screens
+- Mobile-first design approach
+
+## 🔒 Authentication
+
+iReporter uses Convex Auth for secure authentication:
+- Email/password authentication
+- Anonymous sign-in option
+- Secure session management
+
+## 🌐 Deployment
+
+### Frontend Deployment
+
+The frontend is deployed on Netlify:
+
+1. Build the project
+   ```bash
+   npm run build
+   ```
+
+2. Deploy to Netlify
+   ```bash
+   npx netlify deploy --prod
+   ```
+
+### Backend Deployment
+
+The Convex backend is deployed using:
+
+```bash
+npx convex deploy
+```
+
+## 👨‍💻 Developer
+
+**Ham Kemboi**
+- Email: hamsimotwo@gmail.com
+- Location: Syokimau, Nairobi
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🙏 Acknowledgments
+
+- OpenAI for providing the AI capabilities
+- Convex for the backend infrastructure
+- All contributors and testers who helped improve the application
+
+---
+
+© 2025 Ham Kemboi. All Rights Reserved.
+
