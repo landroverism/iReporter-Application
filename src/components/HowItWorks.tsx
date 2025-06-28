@@ -110,8 +110,10 @@ export function HowItWorks() {
       <div className="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl p-8 border border-purple-200 mb-16">
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:w-1/4 mb-6 md:mb-0 flex justify-center">
-            <div className="bg-white rounded-full p-6 shadow-md">
-              <i className="fa-solid fa-robot text-5xl text-purple-600"></i>
+            <div className="bg-white rounded-full p-2 shadow-md">
+              <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-purple-200">
+                <img src="/ai-image.avif" alt="AI Assistant" className="w-full h-full object-cover" />
+              </div>
             </div>
           </div>
           <div className="md:w-3/4 md:pl-8">

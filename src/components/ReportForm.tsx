@@ -222,10 +222,22 @@ export function ReportForm() {
           </div>
           <button
             onClick={() => setShowAssistant(!showAssistant)}
-            className="bg-gradient-to-r from-purple-600 to-purple-700 text-white px-4 py-2.5 rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all duration-200 flex items-center justify-center space-x-2 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 w-full sm:w-auto"
+            className="relative bg-gradient-to-r from-blue-700 to-blue-900 text-white px-4 py-2.5 rounded-xl transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1 w-full sm:w-auto overflow-hidden group"
           >
-            <span>🤖</span>
-            <span className="font-medium">AI Assistant</span>
+            {/* Pulsing glow effect with #001aff blue color */}
+            <div className="absolute inset-0 z-0">
+              <div className="absolute inset-0 bg-[#001aff] opacity-30 group-hover:opacity-40 blur-xl transition-opacity duration-500 animate-pulse"></div>
+              <div className="absolute inset-0 bg-[#001aff] opacity-20 group-hover:opacity-30 blur-lg transition-opacity duration-700 animate-pulse delay-75"></div>
+              <div className="absolute inset-0 bg-[#001aff] opacity-10 group-hover:opacity-20 blur-md transition-opacity duration-1000 animate-pulse delay-150"></div>
+            </div>
+            
+            {/* Content */}
+            <div className="relative z-10 flex items-center justify-center space-x-2">
+              <div className="w-6 h-6 rounded-full overflow-hidden flex-shrink-0 border-2 border-white shadow-[0_0_15px_rgba(0,26,255,0.8)] animate-pulse">
+                <img src="/ai-image.avif" alt="AI" className="w-full h-full object-cover" />
+              </div>
+              <span className="font-medium text-white drop-shadow-[0_0_3px_rgba(0,26,255,0.8)]">AI Assistant</span>
+            </div>
           </button>
         </div>
 
