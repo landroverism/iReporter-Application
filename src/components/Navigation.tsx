@@ -3,7 +3,7 @@ import { useQuery } from 'convex/react';
 import { api } from '../../convex/_generated/api';
 import { SignOutButton } from '../SignOutButton';
 
-type PageType = 'home' | 'about' | 'report' | 'dashboard';
+type PageType = 'home' | 'about' | 'report' | 'dashboard' | 'howItWorks';
 
 interface NavigationProps {
   currentPage: PageType;
@@ -65,6 +65,16 @@ export function Navigation({ currentPage, onNavigate, isLoggedIn }: NavigationPr
               }`}
             >
               About Us
+            </button>
+            <button
+              onClick={() => onNavigate('howItWorks')}
+              className={`text-sm font-medium transition-colors ${
+                currentPage === 'howItWorks'
+                  ? 'text-teal-600 border-b-2 border-teal-600 pb-1'
+                  : 'text-gray-600 hover:text-teal-600'
+              }`}
+            >
+              How It Works
             </button>
             {isLoggedIn && (
               <button
@@ -152,9 +162,10 @@ export function Navigation({ currentPage, onNavigate, isLoggedIn }: NavigationPr
         {isMobileMenuOpen && (
           <div className="md:hidden border-t border-gray-200 bg-white">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              <button onClick={() => handleNavClick('home')} className="block w-full text-left px-3 py-2 text-gray-600 hover:text-teal-600">🏠 Home</button>
-              <button onClick={() => handleNavClick('about')} className="block w-full text-left px-3 py-2 text-gray-600 hover:text-teal-600">ℹ️ About</button>
-              {isLoggedIn && <button onClick={() => handleNavClick('report')} className="block w-full text-left px-3 py-2 text-gray-600 hover:text-teal-600">➕ Report</button>}
+              <button onClick={() => handleNavClick('home')} className="block w-full text-left px-3 py-2 text-gray-600 hover:text-teal-600"><i className="fa-solid fa-house mr-2"></i> Home</button>
+              <button onClick={() => handleNavClick('about')} className="block w-full text-left px-3 py-2 text-gray-600 hover:text-teal-600"><i className="fa-solid fa-info-circle mr-2"></i> About</button>
+              <button onClick={() => handleNavClick('howItWorks')} className="block w-full text-left px-3 py-2 text-gray-600 hover:text-teal-600"><i className="fa-solid fa-circle-info mr-2"></i> How It Works</button>
+              {isLoggedIn && <button onClick={() => handleNavClick('report')} className="block w-full text-left px-3 py-2 text-gray-600 hover:text-teal-600"><i className="fa-solid fa-plus mr-2"></i> Report</button>}
             </div>
           </div>
         )}

@@ -7,11 +7,12 @@ import { Dashboard } from "./components/Dashboard";
 import { LandingPage } from "./components/LandingPage";
 import { Footer } from "./components/Footer";
 import { AboutUs } from "./components/AboutUs";
+import { HowItWorks } from "./components/HowItWorks";
 import { ReportForm } from "./components/ReportForm";
 import { Navigation } from "./components/Navigation";
 import { useState } from "react";
 
-type PageType = 'home' | 'about' | 'report' | 'dashboard';
+type PageType = 'home' | 'about' | 'report' | 'dashboard' | 'howItWorks';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<PageType>('home');
@@ -78,11 +79,13 @@ function Content({
         {currentPage === 'dashboard' && <Dashboard />}
         {currentPage === 'report' && <ReportForm />}
         {currentPage === 'about' && <AboutUs />}
+        {currentPage === 'howItWorks' && <HowItWorks />}
         {currentPage === 'home' && <Dashboard />}
       </Authenticated>
       
       <Unauthenticated>
         {currentPage === 'about' && <AboutUs />}
+        {currentPage === 'howItWorks' && <HowItWorks />}
         {currentPage === 'home' && (
           <div className="max-w-6xl mx-auto px-4 py-8">
             <LandingPage onStartReporting={onStartReporting} onLearnMore={() => onNavigate('about')} />

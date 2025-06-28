@@ -6,8 +6,9 @@ import { ReportsList } from './ReportsList';
 import { AdminPanel } from './AdminPanel';
 import { UserProfile } from './UserProfile';
 import { NotificationCenter } from './NotificationCenter';
+import { HowItWorks } from './HowItWorks';
 
-type TabType = 'overview' | 'create' | 'reports' | 'admin' | 'profile' | 'notifications';
+type TabType = 'overview' | 'create' | 'reports' | 'admin' | 'profile' | 'notifications' | 'howItWorks';
 
 export function Dashboard() {
   const [activeTab, setActiveTab] = useState<TabType>('overview');
@@ -28,6 +29,7 @@ export function Dashboard() {
     { id: 'overview', label: 'Overview', icon: <i className="fa-solid fa-house"></i> },
     { id: 'create', label: 'Create Report', icon: <i className="fa-solid fa-plus"></i> },
     { id: 'reports', label: 'My Reports', icon: <i className="fa-solid fa-clipboard-list"></i> },
+    { id: 'howItWorks', label: 'How It Works', icon: <i className="fa-solid fa-circle-info"></i> },
     ...(isAdmin ? [{ id: 'admin', label: 'Admin Panel', icon: <i className="fa-solid fa-gear"></i> }] : []),
     { id: 'notifications', label: `Notifications${unreadCount ? ` (${unreadCount})` : ''}`, icon: <i className="fa-solid fa-bell"></i> },
     { id: 'profile', label: 'Profile', icon: <i className="fa-solid fa-user"></i> },
@@ -111,6 +113,7 @@ export function Dashboard() {
         {activeTab === 'overview' && <DashboardOverview />}
         {activeTab === 'create' && <ReportForm />}
         {activeTab === 'reports' && <ReportsList />}
+        {activeTab === 'howItWorks' && <HowItWorks />}
         {activeTab === 'admin' && isAdmin && <AdminPanel />}
         {activeTab === 'profile' && <UserProfile />}
         {activeTab === 'notifications' && <NotificationCenter />}
